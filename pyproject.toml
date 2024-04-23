@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mygo-api"
+version = "0.1.0"
+description = "API for mygo meme picture library"
+authors = ["miyago9267 <miyago@miyago9267.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.2"
+uvicorn = "^0.29.0"
+python-dotenv = "^1.0.1"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

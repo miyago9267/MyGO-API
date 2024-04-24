@@ -17,7 +17,7 @@ def get_pic(keyword: str, fuzzy: bool = True):
     if fuzzy:
         urls += [url + item for item in all_pics if keyword in item]
     if keyword in data.keys():
-        urls += [url + item for item in data.get(keyword, {}).get('value', [])]
+        urls += [url + item + '.png' for item in data.get(keyword, {}).get('value', [])]
     urls = list(set(urls))
     if not urls:
         return JSONResponse(status_code=200, content={'urls': []})

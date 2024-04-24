@@ -4,10 +4,23 @@ import uvicorn
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from routers import mygo
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
+origins = [
+    'http://localhost:4000',
+    'https://mygo.miyago9267.com',
+]
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 app.include_router(
     mygo.router,
     prefix="/mygo",

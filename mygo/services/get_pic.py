@@ -12,15 +12,14 @@ with json_path.open('r', encoding='utf-8') as f:
 url = 'https://drive.miyago9267.com/d/home/miyago/Pictures/mygo/'
 all_pics = all_file.file_list
 
-def get_pic(keyword: str):
+def get_pic(keyword: str, fuzzy: bool = True):
+    urls = []
+    if fuzzy:
+        urls += [url + item for item in all_pics if keyword in item]
     if keyword in data.keys():
-        urls = data.get(keyword, {}).get('value', [])
-        updated_urls = [url + item for item in urls]
-        return JSONResponse(status_code=200, content={'urls': updated_urls})
-
-    for item in all_pics:
-        if keyword in item:
-            return JSONResponse(status_code=200, content={'url': [url + item]})
-
+        urls += [url + item for item in data.get(keyword, {}).get('value', [])]
+    urls = list(set(urls))
+    if not urls:
+        return JSONResponse(status_code=200, content={'urls': []})
     else:
-        return HTTPException(status_code=404, detail='Not Found')
+        return JSONResponse(status_code=200, content={'urls': urls})

@@ -7,10 +7,11 @@ router = APIRouter()
 
 @router.get('/img')
 async def get_mygo_pic(
-    keyword: str
+    keyword: str,
+    fuzzy: bool = True
 ) -> dict:
     """Return a mygo picture with keyword"""
-    return get_pic.get_pic(keyword)
+    return get_pic.get_pic(keyword, fuzzy)
 
 @router.get('/all_img')
 async def get_all_mygo_pic() -> dict:

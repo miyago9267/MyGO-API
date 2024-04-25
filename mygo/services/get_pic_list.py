@@ -5,7 +5,7 @@ Danger!!! This module has READ FILE operation.
 import requests
 from fastapi.responses import JSONResponse
 
-url = 'https://drive.miyago9267.com/d/home/miyago/Pictures/mygo/'
+url = 'https://drive.miyago9267.com/d/file/img/mygo/'
 
 def get_pic_list() -> list:
     """Return all mygo pictures"""

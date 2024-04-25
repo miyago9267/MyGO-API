@@ -9,7 +9,7 @@ json_path = Path(__file__).parent.parent / 'static' / 'mygo.json'
 with json_path.open('r', encoding='utf-8') as f:
     data = json.load(f)
 
-url = 'https://drive.miyago9267.com/d/home/miyago/Pictures/mygo/'
+url = 'https://drive.miyago9267.com/d/file/img/mygo/'
 all_pics = all_file.file_list
 
 def get_pic(keyword: str, fuzzy: bool = True):

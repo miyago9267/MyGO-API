@@ -12,7 +12,7 @@ def get_pic_list() -> list:
     try:
         files = requests.get('http://127.0.0.1:9014/pic_list').json()
 
-        all_files = [url + item for item in files]
+        all_files = [{'url':url + item, 'alt':item[:-4]} for item in files]
 
         return JSONResponse(status_code=200, content={'urls': all_files})
     except Exception as e:

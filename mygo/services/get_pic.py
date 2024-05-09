@@ -15,10 +15,12 @@ all_pics = all_file.file_list
 def get_pic(keyword: str, fuzzy: bool = True):
     urls = []
     if fuzzy:
-        urls += [url + item for item in all_pics if keyword in item]
+        urls += [{'url':url + item, 'alt':item[:-4]} for item in all_pics if keyword in item]
     if keyword in data.keys():
-        urls += [url + item + '.png' for item in data.get(keyword, {}).get('value', [])]
-    urls = list(set(urls))
+        urls += [{'url':url + item + '.png', 'alt':item} for item in data.get(keyword, {}).get('value', [])]
+    unique_items = set(tuple(sorted(d.items())) for d in urls)
+
+    urls = [dict(items) for items in unique_items]
     if not urls:
         return JSONResponse(status_code=200, content={'urls': []})
     else:

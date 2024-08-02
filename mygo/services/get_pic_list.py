@@ -4,13 +4,14 @@ Danger!!! This module has READ FILE operation.
 
 import requests
 from fastapi.responses import JSONResponse
+from static import all_file
 
 url = 'https://drive.miyago9267.com/d/file/img/mygo/'
 
 def get_pic_list() -> list:
     """Return all mygo pictures"""
     try:
-        files = requests.get('http://127.0.0.1:9014/pic_list').json()
+        files = all_file.file_list
 
         all_files = [{'url':url + item, 'alt':item[:-4]} for item in files]
 

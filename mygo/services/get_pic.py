@@ -15,9 +15,9 @@ all_pics = all_file.file_list
 def get_pic(keyword: str, fuzzy: bool = True):
     urls = []
     if fuzzy:
-        urls += [{'url':url + item, 'alt':item[:-4]} for item in all_pics if keyword in item]
+        urls += [{'url':url + item['file_name'], 'alt':item['name']} for item in all_pics if keyword in item['name']]
     if keyword in data.keys():
-        urls += [{'url':url + item + '.png', 'alt':item} for item in data.get(keyword, {}).get('value', [])]
+        urls += [{'url':url + item['file_name'], 'alt': item['name']} for item in all_pics if item['name'] in data.get(keyword, {}).get('value', [])]
     unique_items = set(tuple(sorted(d.items())) for d in urls)
 
     urls = [dict(items) for items in unique_items]

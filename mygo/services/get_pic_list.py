@@ -13,7 +13,7 @@ def get_pic_list() -> list:
     try:
         files = all_file.file_list
 
-        all_files = [{'url':url + item, 'alt':item[:-4]} for item in files]
+        all_files = [{'url': url + item['file_name'], 'alt': item['name']} for item in files]
 
         return JSONResponse(status_code=200, content={'urls': all_files})
     except Exception as e:

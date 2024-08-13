@@ -11,6 +11,6 @@ docker build \
 docker run \
 	-itd \
 	-u $(id -u):$(id -g) \
-    -p $port:3151 \
+    -p $port:3150 \
 	--name $name \
 	$user/$name:latest

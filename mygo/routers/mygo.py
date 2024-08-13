@@ -1,7 +1,7 @@
 """Router for Basic Info"""
 import time
 from fastapi import APIRouter
-from services import get_pic, get_pic_list
+from services import get_pic, get_pic_list, get_random_pic
 
 router = APIRouter()
 
@@ -17,3 +17,10 @@ async def get_mygo_pic(
 async def get_all_mygo_pic() -> dict:
     """Return all mygo pictures"""
     return get_pic_list.get_pic_list()
+
+@router.get('/random_img')
+async def get_random_mygo_pic(
+    amount: int = 20
+) -> dict:
+    """Return random mygo pictures in amount"""
+    return get_random_pic.get_random_pic(amount)

@@ -1,7 +1,7 @@
 # MYGO圖包API
 
 你願意一輩子跟我一起MyGo嗎？
-[API Swagger Docs](https://mygoapi.miyago9267.com)
+[API Swagger Docs](https://mygoapi.miyago9267.com/docs)
 
 ## 部署
 

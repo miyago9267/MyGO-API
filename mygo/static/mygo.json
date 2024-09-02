@@ -701,6 +701,24 @@
             "It's my go耶, it's my go"
         ]
     },
+    "買夠":{
+        "value": [
+            "我們是MyGO",
+            "It's my go耶, it's my go"
+        ]
+    },
+    "賣狗":{
+        "value": [
+            "我們是MyGO",
+            "It's my go耶, it's my go"
+        ]
+    },                    
+    "買狗":{
+        "value": [
+            "我們是MyGO",
+            "It's my go耶, it's my go"
+        ]
+    },
     "態度": {
         "value": [
             "態度好差喔"

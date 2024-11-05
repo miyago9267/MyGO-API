@@ -13,4 +13,5 @@ docker run \
 	-u $(id -u):$(id -g) \
     -p $port:3150 \
 	--name $name \
+  --restart=always \
 	$user/$name:latest

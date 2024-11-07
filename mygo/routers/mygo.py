@@ -1,7 +1,7 @@
 """Router for Basic Info"""
 import time
 from fastapi import APIRouter
-from services import get_pic, get_pic_list, get_random_pic
+from services import get_pic_multikey, get_pic_list, get_random_pic
 
 router = APIRouter()
 
@@ -11,7 +11,8 @@ async def get_mygo_pic(
     fuzzy: bool = True
 ) -> dict:
     """Return a mygo picture with keyword"""
-    return get_pic.get_pic(keyword, fuzzy)
+    keywords = keyword.split(' ')
+    return get_pic_multikey.get_pic(keywords, fuzzy)
 
 @router.get('/all_img')
 async def get_all_mygo_pic() -> dict:

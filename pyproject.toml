@@ -13,6 +13,7 @@ python-dotenv = "^1.0.1"
 requests = "^2.31.0"
 pymongo = {extras = ["srv"], version = "^4.7.0"}
 python-levenshtein = "^0.26.1"
+opencc-python-reimplemented = "^0.1.7"
 
 
 [build-system]

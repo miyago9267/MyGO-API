@@ -328,6 +328,17 @@ files = [
 rapidfuzz = ">=3.9.0,<4.0.0"
 
 [[package]]
+name = "opencc-python-reimplemented"
+version = "0.1.7"
+description = "OpenCC made with Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "opencc-python-reimplemented-0.1.7.tar.gz", hash = "sha256:4f777ea3461a25257a7b876112cfa90bb6acabc6dfb843bf4d11266e43579dee"},
+    {file = "opencc_python_reimplemented-0.1.7-py2.py3-none-any.whl", hash = "sha256:41b3b92943c7bed291f448e9c7fad4b577c8c2eae30fcfe5a74edf8818493aa6"},
+]
+
+[[package]]
 name = "pydantic"
 version = "2.7.0"
 description = "Data validation using Python type hints"
@@ -744,4 +755,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c3cd9a37b51aa4477a37d435c987cafcdb35a07232a2bde167d813082e6a197c"
+content-hash = "cea7d3356ec49ef491621a547832056d920428786ef9e00acc0a7e89e199d862"

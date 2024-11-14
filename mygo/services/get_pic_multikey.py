@@ -4,8 +4,10 @@ import json
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from algo.Levenshtein import distance as levenshtein_distance
+from opencc import OpenCC
 
 json_path = Path(__file__).parent.parent / 'static' / 'mygo.json'
+cc = OpenCC('s2t')
 
 with json_path.open('r', encoding='utf-8') as f:
     data = json.load(f)
@@ -51,8 +53,10 @@ def calculate_score(keyword, text):
     return score
 
 def get_pic(keywords: list[str], fuzzy: bool = True):
+    keywords = [cc.convert(keyword) for keyword in keywords]
     scored_results = []
     full_match_results = []
+    custom_keymap_results = []
 
     for item in all_pics:
         name = item['name']
@@ -96,8 +100,11 @@ def get_pic(keywords: list[str], fuzzy: bool = True):
                 full_match_results.append({'url': url + item['file_name'], 'alt': item['name'], 'score': 15})
                 break
 
+    if keyword in data.keys():
+        custom_keymap_results += [{'url':url + item['file_name'], 'alt': item['name'], 'score': 15} for item in all_pics if item['name'] in data.get(keyword, {}).get('value', [])]
+
     # 合併原有算法結果和自定義映射結果，去重
-    combined_results = {f"{r['url']}": r for r in (scored_results + full_match_results)}.values()
+    combined_results = {f"{r['url']}": r for r in (scored_results + full_match_results + custom_keymap_results)}.values()
     sorted_results = sorted(combined_results, key=lambda x: x['score'], reverse=True)
 
     return JSONResponse(status_code=200, content={'urls': [r for r in sorted_results]})

@@ -11,7 +11,8 @@ load_dotenv()
 origins = [
     'http://localhost:4000',
     'https://mygo.miyago9267.com',
-    'https://mygotest.miyago9267.com'
+    'https://mygotest.miyago9267.com',
+    '*'
 ]
 
 app = FastAPI()

@@ -166,3 +166,6 @@ exec/
 data/
 .venv/
 __pycache__
+
+# finder
+*.DS_Store

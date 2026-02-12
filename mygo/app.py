@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from routers import mygo
+from routers.v1 import router as v1_router
 from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
@@ -15,7 +16,12 @@ origins = [
     '*'
 ]
 
-app = FastAPI()
+app = FastAPI(
+    title="MyGO API",
+    description="API for MyGO meme picture library",
+    version="1.0.0"
+)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -23,16 +29,30 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+# V1 API routes (新版 API)
+app.include_router(
+    v1_router,
+    prefix="/api/v1",
+    tags=["V1"]
+)
+
+# Legacy routes (向後相容)
 app.include_router(
     mygo.router,
     prefix="/mygo",
-    tags=["MyGo"]
+    tags=["Legacy MyGo"]
 )
 
-@app.get('/PING')
+@app.get('/PING', tags=["Health"])
 def ping() -> str:
-    """Return tesing PONG"""
+    """Return testing PONG"""
     return 'PONG'
+
+@app.get('/api/ping', tags=["Health"])
+def api_ping() -> dict:
+    """Return API ping response"""
+    return {'message': 'pong'}
 
 if __name__ == "__main__":
     uvicorn.run(

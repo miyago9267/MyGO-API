@@ -1,17 +1,18 @@
 [tool.poetry]
 name = "mygo-api"
-version = "0.1.0"
+version = "1.0.0"
 description = "API for mygo meme picture library"
 authors = ["miyago9267 <miyago@miyago9267.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = "^0.110.2"
-uvicorn = "^0.29.0"
+fastapi = "^0.115.0"
+uvicorn = "^0.32.0"
 python-dotenv = "^1.0.1"
-requests = "^2.31.0"
-pymongo = {extras = ["srv"], version = "^4.7.0"}
+requests = "^2.32.0"
+urllib3 = "^2.2.3"
+pymongo = {extras = ["srv"], version = "^4.10.0"}
 python-levenshtein = "^0.26.1"
 opencc-python-reimplemented = "^0.1.7"
 

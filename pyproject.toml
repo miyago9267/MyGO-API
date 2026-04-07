@@ -10,7 +10,7 @@ python = "^3.12"
 fastapi = "^0.115.0"
 uvicorn = "^0.32.0"
 python-dotenv = "^1.0.1"
-requests = "^2.32.0"
+requests = "^2.33.0"
 urllib3 = "^2.2.3"
 pymongo = {extras = ["srv"], version = "^4.10.0"}
 python-levenshtein = "^0.26.1"
